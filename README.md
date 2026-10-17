@@ -118,7 +118,9 @@ code change.
 - A USB A-to-B cable that carries data.
 - A **Linux** host near the pump, for example a Raspberry Pi running Raspberry
   Pi OS or Debian. The port shows up as a CDC-ACM device, usually
-  `/dev/ttyACM0`.
+  `/dev/ttyACM0`. Alternatively, Home Assistant OS connected to the pump runs
+  the gateway as an App; the rest of this list does not apply to it (see
+  [ha-app/nibe_service_usb/DOCS.md](ha-app/nibe_service_usb/DOCS.md)).
 - **Python 3.11 or newer.**
 - The user running the gateway must be in the **`dialout`** group to open
   the serial port (the systemd unit handles this for the service user).
@@ -130,6 +132,9 @@ code change.
 This runs the gateway from a checkout as your own user so you can try it.
 For a permanent install as a systemd service, continue with
 [docs/installation.md](docs/installation.md) afterwards.
+
+**On Home Assistant OS**, install the gateway as an App instead and skip the
+steps below: see [ha-app/nibe_service_usb/DOCS.md](ha-app/nibe_service_usb/DOCS.md).
 
 **1. Install `uv`** (or use plain `pip`, shown below):
 
@@ -317,6 +322,7 @@ because heating is blocked), `safety_supply_temp`, `stale_data`,
 | Document | Content |
 |---|---|
 | [docs/installation.md](docs/installation.md) | Permanent install as a systemd service, logs, upgrades, key handling |
+| [ha-app/nibe_service_usb/DOCS.md](ha-app/nibe_service_usb/DOCS.md) | Install as a Home Assistant OS App |
 | [docs/configuration.md](docs/configuration.md) | Config file reference, data directory, CLI |
 | [docs/development.md](docs/development.md) | Dev setup, tests, simulator, console probe script, project layout |
 | [docs/protocol.md](docs/protocol.md) | TCP wire protocol between Home Assistant and the gateway (the integration's contract) |

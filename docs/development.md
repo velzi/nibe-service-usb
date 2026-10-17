@@ -150,6 +150,8 @@ nibe-service-usb/
 ├── pyproject.toml, uv.lock
 ├── config.example.toml          # every key with its default
 ├── systemd/nibe-service-usb.service
+├── repository.yaml              # makes this repo a Home Assistant app repository
+├── ha-app/nibe_service_usb/     # the Home Assistant OS App (see "Releases")
 ├── scripts/probe_console.py     # standalone console probe (see above)
 ├── docs/
 ├── tests/                       # pytest, one file per module or feature
@@ -169,6 +171,35 @@ nibe-service-usb/
 The layering is strict. `api/` never names a register, `core/` decides what
 is read and written, and `pump/` knows nothing about Home Assistant. See
 [architecture.md](architecture.md).
+
+## Releases
+
+The Home Assistant OS App in `ha-app/nibe_service_usb/` installs the gateway
+from the git tag `v<version>`, where `<version>` is the App's `version` in
+`config.yaml`. For each release:
+
+1. Set the same version in `pyproject.toml`, `src/nibe_service_usb/__init__.py`
+   and `ha-app/nibe_service_usb/config.yaml` (`tests/test_ha_app.py` checks the
+   App against `pyproject.toml`).
+2. Commit, then tag that commit `v<version>` and push the tag. Home Assistant
+   offers the update once `config.yaml` with the new version is on the
+   default branch, so the tag must exist by then.
+
+The Supervisor builds the image on the user's device from
+`ha-app/nibe_service_usb/Dockerfile`. Only the App folder is the build
+context, so the Dockerfile downloads the tagged source from `GATEWAY_REPO`
+and installs it with the versions in `uv.lock`. A fork sets its own URL in
+`GATEWAY_REPO` (that one decides what is installed) and, for the App store
+page, in `repository.yaml` and the `url` of `config.yaml`.
+
+To test the App image locally without a tag (this is not a supported way to
+run the gateway):
+
+```bash
+docker build -t nibe-ha-app ha-app/nibe_service_usb \
+  --build-arg GATEWAY_REF=main   # any branch or tag; GATEWAY_REPO=... for a fork
+docker run --rm -v "$PWD/data:/etc/nibe-service-usb" nibe-ha-app
+```
 
 ## Design documents
 

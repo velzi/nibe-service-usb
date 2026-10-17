@@ -1,0 +1,21 @@
+name: Nibe service USB gateway
+# Must equal the gateway version in pyproject.toml: the Dockerfile installs tag v<version>.
+version: "0.1.0"
+slug: nibe_service_usb
+description: Gateway between Home Assistant and a Nibe heat pump's service USB port
+url: https://github.com/tumik/nibe-service-usb
+arch:
+  - amd64
+  - aarch64
+startup: application
+boot: auto
+# mDNS discovery advertises the host's LAN address only on the host network.
+host_network: true
+# Every ttyACM device, so the pump's port survives USB re-enumeration.
+uart: true
+map:
+  # Optional config.toml plus auth.key and server_id; read_only: false because the
+  # gateway creates the key on its first start.
+  - type: app_config
+    read_only: false
+    path: /etc/nibe-service-usb

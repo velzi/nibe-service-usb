@@ -12,6 +12,9 @@ which expects this layout:
 | Data directory (key, server id) | `/var/lib/nibe-service-usb/` (`NIBE_SERVICE_USB_DATA_DIR`, created by systemd's `StateDirectory=`) |
 | Service user | `nibe`, with supplementary group `dialout` |
 
+On Home Assistant OS, use the App instead of this guide: see
+[ha-app/nibe_service_usb/DOCS.md](../ha-app/nibe_service_usb/DOCS.md).
+
 If you have not tried the gateway yet, go through the
 [install section of the README](../README.md#install) first. It is the fastest way to see
 whether your pump answers at all.

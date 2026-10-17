@@ -34,6 +34,8 @@ First public release. Tested on a Nibe F1226-6 R with display firmware 7994R7.
 - `scripts/probe_console.py` console probe, read-only by default. Write
   tests are opt-in (`--write-test`, `--eeprom`, `--memwrite`).
 - systemd unit, installation guide, CI (ruff and pytest on Python 3.11 to 3.13).
+- Home Assistant OS App (`ha-app/nibe_service_usb/`): add this repository in
+  the App store and run the gateway on Home Assistant OS.
 
 ### Security
 
