@@ -53,7 +53,7 @@ integration connects to the gateway.
 The gateway creates a 32-byte key on its first start and stores it in the
 App's configuration folder. In a file editor that shows all App folders, such
 as Studio Code Server or the Samba share, the folder is
-`addon_configs/<id>_nibe_service_usb/`, where `<id>` is the repository ID that
+`app_configs/<id>_nibe_service_usb/`, where `<id>` is the repository ID that
 Home Assistant gives this repository.
 
 | File | Content |
