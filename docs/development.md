@@ -180,7 +180,8 @@ from the git tag `v<version>`, where `<version>` is the App's `version` in
 
 1. Set the same version in `pyproject.toml`, `src/nibe_service_usb/__init__.py`
    and `ha-app/nibe_service_usb/config.yaml` (`tests/test_ha_app.py` checks the
-   App against `pyproject.toml`).
+   App against `pyproject.toml`), then run `uv lock`: `uv.lock` records the
+   project's own version, and the App's `uv sync --locked` fails without it.
 2. Commit, then tag that commit `v<version>` and push the tag. Home Assistant
    offers the update once `config.yaml` with the new version is on the
    default branch, so the tag must exist by then.
