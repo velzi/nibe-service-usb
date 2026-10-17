@@ -6,7 +6,7 @@ FROM python:3.13-slim
 # build without it fails instead of installing a stale release.
 ARG BUILD_VERSION
 # Where the gateway comes from. A fork changes this line.
-ARG GATEWAY_REPO=https://github.com/tumik/nibe-service-usb
+ARG GATEWAY_REPO=https://github.com/velzi/nibe-service-usb
 # Branch or tag to install; override only for testing (e.g. main).
 ARG GATEWAY_REF=v${BUILD_VERSION}
 
