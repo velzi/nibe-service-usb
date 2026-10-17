@@ -14,3 +14,5 @@ data/
 config.local.toml
 # stray logs at the repo root
 /*.log
+# local issue tracker (see docs/agents/issue-tracker.md)
+.scratch/
