@@ -1,6 +1,6 @@
 [project]
 name = "nibe-service-usb"
-version = "0.1.0"
+version = "0.1.2"
 description = "Gateway between Home Assistant and a Nibe heat pump service USB console"
 readme = "README.md"
 requires-python = ">=3.11"

@@ -1,6 +1,6 @@
 name: Nibe service USB gateway
 # Must equal the gateway version in pyproject.toml: the Dockerfile installs tag v<version>.
-version: "0.1.0"
+version: "0.1.2"
 slug: nibe_service_usb
 description: Gateway between Home Assistant and a Nibe heat pump's service USB port
 url: https://github.com/tumik/nibe-service-usb
